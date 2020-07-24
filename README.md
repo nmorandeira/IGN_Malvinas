@@ -1,7 +1,7 @@
 # Cómo representar a las Islas Malvinas en R y en QGIS
 ## Protocolo para usar el mapa base _Argenmap v2_ del Instituto Geográfico Nacional
 
-Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar).
+Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
 ## A quién está dirigido
 Este protocolo está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
