@@ -18,6 +18,8 @@ Si bien este documento no provee una solución explícita para Python ni para ot
 
 El protocolo fue redactado en julio de 2020, con colaboración de Malena Libman que señaló por dónde iba la solución: usar como mapa base a Argenmap v2, un gran trabajo elaborado por el Instituto Geográfico Nacional (IGN) de la República Argentina.
 
+El repositorio del proyecto está en *Github*: <https://github.com/nmorandeira/IGN_Malvinas>.
+
 ## Motivación
 Las Islas Malvinas son muchas veces etiquetadas con un nombre incorrecto, no consistente con nuestro reclamo histórico y vigente de soberanía sobre las islas. ¿Por qué los argentinos y argentinas generan mapas con un nombre distinto a "Islas Malvinas"? Al discutirlo con colegas, me encuentro con que algunas personas justifican el error porque, dicen, sus mapas están en inglés. Pero ojo: *la única traducción de "Islas Malvinas" al inglés es "Malvinas Islands"*. Así lo considera Cancillería Argentina (ver por ejemplo este documento en inglés: <https://www.cancilleria.gob.ar/en/news/newsletter/question-malvinas-islands-support-argentinas-claim>). Usar el nombre inglés o usar un binomio (Nombre argentino / Nombre inglés) implica simbólicamente un retroceso en nuestra reivindicación de soberanía sobre las islas.
 
@@ -197,7 +199,7 @@ Ahora sí obtenemos el mapa deseado:
 
 ![](data/QGIS_4.png){width=50%}
 
-Dejo a disposición el proyecto de este ejercicio tipo, aquí: <>.
+Dejo a disposición el proyecto de este ejercicio tipo, aquí: <https://github.com/nmorandeira/IGN_Malvinas/blob/master/IGN_Malvinas.qgz?raw=true>.
 Una visualización general del proyecto y las capas XYZ en los paneles Navegador y Capas es:
 
 ![](data/QGIS_5.png){width=80%}
