@@ -1,0 +1,3 @@
+theme: jekyll-theme-cayman
+title: Cómo representar a las Islas Malvinas en R y QGIS
+description: Una discusión sobre las Islas Malvinas en el mapa base de OpenStreetMap y los protocolos de visualización con Argenmap del Instituto Geográfico Nacional.
