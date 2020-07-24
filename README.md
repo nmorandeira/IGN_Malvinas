@@ -3,6 +3,9 @@
 
 Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
+## Protocolo completo
+Para acceder al protocolo completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/>.
+
 ## A quién está dirigido
 Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
 
@@ -19,6 +22,3 @@ Se provee:
 
 ### Agradecimientos
 El protocolo fue redactado en julio de 2020, con colaboración de *Malena Libman* que señaló por dónde iba la solución: usar como mapa base a Argenmap v2, un gran trabajo elaborado por el Instituto Geográfico Nacional (IGN) de la República Argentina. Agradezco también a *Priscilla Minotti* por los comentarios que mejoraron el script de R y por sugerirme escribirlo en Rmd y dejarlo en Github; y a *R-Ladies* (Buenos Aires, Santa Rosa y General Pico) por varios talleres y por la ayuda con Rmd, Git y otros temas. 
-
-## Protocolo completo
-Para acceder al protocolo completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/>.
