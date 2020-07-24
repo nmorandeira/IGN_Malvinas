@@ -14,6 +14,7 @@ Si bien este documento no provee una solución explícita para Python ni para ot
 Se provee:
 - Documentación con una discusión sobre el problema de representación de las Islas Malvinas y la solución de visualización provista por Argenmaps v2 del IGN, con instrucciones para R y QGIS 3.xx. Esta documentación y script de RMarkdown está en los archivos IGN_Malvinas.rmd y su compilado IGN_Malvinas.html. 
 - Tanto para R como para QGIS, un ejercicio tipo de visualización de dos capas vectoriales (Áreas protegidas de Argentina y Límites a la zona económica exclusiva), con un mapa base de fondo.
+- Los scripts de R (.Rmd) con el ejemplo del ejercicio tipo.
 - Un proyecto de QGIS 3.14 (.qgz) con el ejemplo del ejercicio tipo.
 
 ### Agradecimientos
