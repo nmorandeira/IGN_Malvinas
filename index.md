@@ -13,7 +13,7 @@ Se provee:
 - Un proyecto de QGIS 3.14 (.qgz) con el ejemplo del ejercicio tipo.
 
 ## Protocolo completo
-Para acceder al protocolo completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/protocolo/IGN_Malvinas.html>.
+Para acceder al protocolo completo, ir al <a href="protocolo/IGN_Malvinas/">Documento</a>.
 
 ## Repositorio de Github
 Adems de esta documentación, en el repositorio está el script de R (.Rmd) y un proyecto de QGIS (.qgz): <https://github.com/nmorandeira/IGN_Malvinas/>.
