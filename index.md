@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
 ## A quién está dirigido
