@@ -5,11 +5,6 @@ author: "Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)"
 output:
   html_document: default
   theme: jekyll-theme-cayman
-  highlight: haddock
-  number_sections: yes
-  toc: yes
-  toc_float: true
-  collapsed: no
 ---
 
 ```{r setup, include=FALSE}
@@ -17,9 +12,16 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 ```
 
 ## A quién está dirigido
-Este protocolo está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
+Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
+
+A su vez, el documento está dirigido a quienes ya conozcan el mapa base Argenmap v2 del Instituto Geográfico Nacional y quieran utilizarlo o promover su uso en R o QGIS.
 
 Si bien este documento no provee una solución explícita para Python ni para otros softwares/lenguajes libres, invito a contribuir a quienes lo deseen: posiblemente algo de lo aquí documentado pueda ser de utilidad. Por otro lado, en los softwares privativos de Sistemas de Información Geográfica muy probablemente podrá utilizarse la solución provista para QGIS, basada en XYZ tiles.
+
+## Motivación
+Las Islas Malvinas son muchas veces etiquetadas con un nombre incorrecto, no consistente con nuestro reclamo histórico y vigente de soberanía sobre las islas. ¿Por qué los argentinos y argentinas generan mapas con un nombre distinto a "Islas Malvinas"? Al discutirlo con colegas, me encuentro con que algunas personas justifican el error porque, dicen, sus mapas están en inglés. Pero ojo: *la única traducción de "Islas Malvinas" al inglés es "Malvinas Islands"*. Así lo considera Cancillería Argentina (ver por ejemplo este documento en inglés: <https://www.cancilleria.gob.ar/en/news/newsletter/question-malvinas-islands-support-argentinas-claim>). Usar el nombre inglés o usar un binomio (Nombre argentino / Nombre inglés) implica simbólicamente un retroceso en nuestra reivindicación de soberanía sobre las islas.
+
+Quienes sólo tengan interés en la solución práctica, pueden saltearse el próximo apartado sobre el origen del problema e ir a la sección *Protocolo para R* ó *Protocolo para QGIS*.
 
 ## Agradecimientos
 El protocolo fue redactado en julio de 2020, con colaboración de *Malena Libman* que señaló por dónde iba la solución: usar como mapa base a Argenmap v2, un gran trabajo elaborado por el Instituto Geográfico Nacional (IGN) de la República Argentina.
@@ -28,15 +30,9 @@ Agradezco también a *Priscilla Minotti* por los comentarios que mejoraron el sc
 
 El repositorio del proyecto en *Github* está en: <https://github.com/nmorandeira/IGN_Malvinas>.
 
-## Motivación
-Las Islas Malvinas son muchas veces etiquetadas con un nombre incorrecto, no consistente con nuestro reclamo histórico y vigente de soberanía sobre las islas. ¿Por qué los argentinos y argentinas generan mapas con un nombre distinto a "Islas Malvinas"? Al discutirlo con colegas, me encuentro con que algunas personas justifican el error porque, dicen, sus mapas están en inglés. Pero ojo: *la única traducción de "Islas Malvinas" al inglés es "Malvinas Islands"*. Así lo considera Cancillería Argentina (ver por ejemplo este documento en inglés: <https://www.cancilleria.gob.ar/en/news/newsletter/question-malvinas-islands-support-argentinas-claim>). Usar el nombre inglés o usar un binomio (Nombre argentino / Nombre inglés) implica simbólicamente un retroceso en nuestra reivindicación de soberanía sobre las islas.
-
-Parte de esta inquietud surgió en un slack de RLadies-Buenos Aires. Luego también me encontré con mapas con nombres no apropiados, publicados por científicos/as argentinos/as en revistas científicas internacionales.
-
-Quienes sólo tengan interés en la solución práctica, pueden saltearse el próximo apartado sobre el origen del problema e ir a la sección *Protocolo para R* ó *Protocolo para QGIS*. 
 
 -------------
-
+# Introducción a la problemática
 ## El origen del problema: los mapas base
 Tanto en QGIS como en R (en las representaciones con Leaflet), solemos usar como mapas base a las capas de *OpenStreetMap (OSM)* o de otros proveedores. En QGIS, lo hacemos a través de _XYZ tiles_; en R a través de los _proveedores de Leaflet_. Hay muchos proveedores de Leaflet (ver más adelante, spoiler: ninguno de los usualmente listados dice "Islas Malvinas"), pero voy a enfocarme en OSM porque es uno de los más usados y porque tiene muchas ventajas frente a otros.
 En contraste con otros proveedores de datos geográficos, OSM es libre: podemos descargar la información, usar en nuestras publicaciones mapas con sus datos y también aportar mapeando (como hacen muchas personas en nuestro país). Sin embargo, OSM es un proyecto global y no reconoce nuestra soberanía sobre las islas. 
@@ -58,20 +54,21 @@ Por defecto, OSM representa los nombres en el lenguaje del país local (por ejem
 
 -------------
 
-### Soluciones parciales
+## Soluciones parciales
 Una solución parcial sería cargar en nuestros mapas la etiqueta _name:es_ por defecto. ¿Qué implicaría? Que usaríamos el nombre en castellano, no sólo para las Islas Malvinas, sino para cualquier territorio, incluyendo Brasil y China (siguiendo el ejemplo de más arriba). No resuelve el problema de fondo sobre cómo se posiciona OSM ante el conflicto, pero sería una solución parcial. Sin embargo, esto no es tan fácil de hacer para usuarias/os finales (a quienes va dirigido este documento).
 
 Una ventaja de que OSM sea libre es que puede ser descargado y vuelto a subir en otros servidores, como por ejemplo se ha hecho en *OSM-Argentina*, que pudo solucionar algunos problemas (el nombre de las islas) pero no otros (el nombre de ciudades y accidentes geográficos): <https://openstreetmap.org.ar/#6.11/-53.41/-63.924>.
 
 Por otro lado, el *Instituto Geográfico Nacional* (IGN) sí lo resuelve: en su *Argenmap v2* representa correctamente la toponimia oficial de las jurisdicciones y accidentes geográficos de Argentina. Acá encuentran documentación de qué información representa Argenmap: <https://www.ign.gob.ar/AreaServicios/Argenmap/Introduccion>, básicamente _"utiliza los datos oficiales publicados por el Instituto Geográfico Nacional a través de su servicio WMS hasta la escala 1:250.000 (es decir, a partir del nivel de zoom 12)"_. Aquí pueden ver cómo quedan las Islas Malvinas: <https://mapa.ign.gob.ar/>. Podemos notar que no sólo es correcto el nombre de las islas, sino también el de la "Provincia de Tierra del Fuego, Antártida e Islas del Atlántico Sur". Y también el nombre de ríos, lagunas, cerros, montañas, etc (zoom en las islas o, por qué no, en un área que cada una/o conozca, por ejemplo en los humedales del Paraná están cargados los nombres oficiales de las lagunas).
 
-*Conclusión:* la mejor solución para nuestro problema de representación de las Islas Malvinas es usar como mapa base a Argenmap v2 de IGN.
+### Conclusión
+La mejor solución para nuestro problema de representación de las Islas Malvinas es usar como mapa base a Argenmap v2 de IGN.
 
 -------------
 
-# Protocolos
+# Protocolos para el uso del mapa base Argenmap v2 de IGN
 ## Ejercicio tipo
-Para practicar la visualización de datos geográficos con R y QGIS, planteo un _ejercicio tipo_. El objetivo del ejercicio es representar las áreas protegidas de Argentina y los límites de la zona económica exclusiva (ambas capas son de IGN) en R, con un mapa base adecuado. En particular, nos interesa representar adecuadamente al Área Protegida Banco Burwood II y su entorno.
+Para practicar la visualización de datos geográficos con R y QGIS, planteo un _ejercicio tipo_. El objetivo del ejercicio es representar las áreas protegidas de Argentina y los límites de la zona económica exclusiva (ambas capas son de IGN) en R, con un mapa base adecuado. En particular, nos interesa representar al Área Protegida Banco Burwood II y su entorno, con un mapa base adecuado.
 
 -------------
 
