@@ -16,4 +16,4 @@ Se provee:
 - Un proyecto de QGIS 3.14 (.qgz) con el ejemplo del ejercicio tipo.
 
 ## Protocolo completo
-Para acceder al protocolo completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/protocolo/IGN_Malvinas.html>.
+Para acceder al protocolo completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/IGN_Malvinas.html>.
