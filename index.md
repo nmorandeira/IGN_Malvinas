@@ -1,5 +1,3 @@
-# Protocolos para usar el mapa base _Argenmap v2_ del Instituto Geográfico Nacional
-
 Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
 ## A quién está dirigido
