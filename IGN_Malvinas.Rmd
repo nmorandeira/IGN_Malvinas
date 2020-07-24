@@ -11,6 +11,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 ```
 
+---------------------
+
 ## A quién está dirigido
 Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
 
@@ -23,15 +25,15 @@ Las Islas Malvinas son muchas veces etiquetadas con un nombre incorrecto, no con
 
 Quienes sólo tengan interés en la solución práctica, pueden saltearse el próximo apartado sobre el origen del problema e ir a la sección *Protocolo para R* ó *Protocolo para QGIS*.
 
-## Agradecimientos
+### Agradecimientos
 El protocolo fue redactado en julio de 2020, con colaboración de *Malena Libman* que señaló por dónde iba la solución: usar como mapa base a Argenmap v2, un gran trabajo elaborado por el Instituto Geográfico Nacional (IGN) de la República Argentina.
 
 Agradezco también a *Priscilla Minotti* por los comentarios que mejoraron el script de R y por sugerirme escribirlo en Rmd y dejarlo en Github; y a *R-Ladies* (Buenos Aires, Santa Rosa y General Pico) por varios talleres y por la ayuda con Rmd, Git y otros temas. 
 
 El repositorio del proyecto en *Github* está en: <https://github.com/nmorandeira/IGN_Malvinas>.
 
+---------------------
 
--------------
 # Introducción a la problemática
 ## El origen del problema: los mapas base
 Tanto en QGIS como en R (en las representaciones con Leaflet), solemos usar como mapas base a las capas de *OpenStreetMap (OSM)* o de otros proveedores. En QGIS, lo hacemos a través de _XYZ tiles_; en R a través de los _proveedores de Leaflet_. Hay muchos proveedores de Leaflet (ver más adelante, spoiler: ninguno de los usualmente listados dice "Islas Malvinas"), pero voy a enfocarme en OSM porque es uno de los más usados y porque tiene muchas ventajas frente a otros.
