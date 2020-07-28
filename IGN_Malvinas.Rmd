@@ -20,9 +20,12 @@ A su vez, el documento está dirigido a quienes ya conozcan el mapa base Argenma
 Si bien este documento no provee una solución explícita para Python ni para otros softwares/lenguajes libres, invito a contribuir a quienes lo deseen: posiblemente algo de lo aquí documentado pueda ser de utilidad. Por otro lado, en los softwares privativos de Sistemas de Información Geográfica muy probablemente podrá utilizarse la solución provista para QGIS, basada en XYZ tiles.
 
 ## Motivación
-Las Islas Malvinas son muchas veces etiquetadas con un nombre incorrecto, no consistente con nuestro reclamo histórico y vigente de soberanía sobre las islas. ¿Por qué los argentinos y argentinas generan mapas con un nombre distinto a "Islas Malvinas"? Al discutirlo con colegas, me encuentro con que algunas personas justifican el error porque, dicen, sus mapas están en inglés. Pero ojo: *la única traducción de "Islas Malvinas" al inglés es "Malvinas Islands"*. Así lo considera Cancillería Argentina (ver por ejemplo [este documento en inglés](https://www.cancilleria.gob.ar/en/news/newsletter/question-malvinas-islands-support-argentinas-claim)). Usar el nombre inglés o usar un binomio (Nombre argentino / Nombre inglés) implica simbólicamente un retroceso en nuestra reivindicación de soberanía sobre las islas.
+En los mapas elaborados con herramientas digitales, las Islas Malvinas son muchas veces etiquetadas con un nombre incorrecto, no consistente con nuestro reclamo histórico y vigente de soberanía sobre las islas. ¿Por qué los argentinos y argentinas generan mapas con un nombre distinto a "Islas Malvinas"? Al discutirlo con colegas, me he encontrado con personas que:
+* No se habían dado cuenta del error, pero quieren y pueden solucionarlo cuando se les señala.
+* No se habían dado cuenta del error y no tienen suficientes conocimientos técnicos para solucionarlo.
+* Justifican el error porque, dicen, sus mapas están en inglés. Pero ojo: *la única traducción de "Islas Malvinas" al inglés es "Malvinas Islands"*. Así lo considera Cancillería Argentina (ver por ejemplo [este documento en inglés](https://www.cancilleria.gob.ar/en/news/newsletter/question-malvinas-islands-support-argentinas-claim)). Usar el nombre inglés o usar un binomio (Nombre argentino / Nombre inglés) implica simbólicamente un retroceso en nuestra reivindicación de soberanía sobre las islas.
 
-Quienes sólo tengan interés en la solución práctica, pueden saltearse el próximo apartado sobre el origen del problema e ir a la sección *Protocolo para R* ó *Protocolo para QGIS*.
+Este documento provee una discusión sobre los orígenes del problema de representación de las Islas Malvinas y algunas herramientas para resolverlo. Quienes sólo tengan interés en la solución práctica, pueden saltearse el próximo apartado sobre el origen del problema e ir a la sección *Protocolo para R* ó *Protocolo para QGIS*.
 
 ### Agradecimientos
 El protocolo fue redactado en julio de 2020, con colaboración de *Malena Libman* (Geochicas OSM) que señaló por dónde iba la solución: usar como mapa base a Argenmap v2, un gran trabajo elaborado por el Instituto Geográfico Nacional (IGN) de la República Argentina.
@@ -33,15 +36,15 @@ El repositorio del proyecto en *Github* está en: <https://github.com/nmorandeir
 
 ---------------------
 
-# Introducción a la problemática
+# Los orígenes del problema
 Hay dos tipos de problemas en la representación de las Islas Malvinas y ambos tienen que ver con el origen de los datos geográficos utilizados. Las soluciones indicadas tienen que ver con usar los datos oficiales de Argentina, elaborados y publicados por el Instituto Geográfico Nacional.
 
-## El problema de los datos vectoriales
+## El problema de la fuente de los datos vectoriales
 Los objetos geográficos con representación de tipo vectorial (o "datos vectoriales") representan principalmente puntos, líneas ó polígonos. Si queremos elaborar un mapa temático con información de Argentina, en el que representemos con distinto color o tono alguna variable por provincia, podemos utilizar un objeto vectorial de polígonos ("provincias de Argentina"). En ese caso, hay que tener cuidado con la fuente de los datos: ¿qué pasa si está incompleta la Provincia de Tierra del Fuego, Antártida e Islas del Atlántico Sur? Quedaría incompleto el mapa de nuestro territorio.
 
 Otro ejemplo puede ser el uso de un mapa global, con todos los países, en donde queremos asignarle a cada país un tono de acuerdo al valor de una determinada variable: ¿qué pasa si el polígono de las Islas Malvinas no tiene como etiqueta que pertenece al país República Argentina? También quedaría incompleto el mapa de nuestro territorio.
 
-### Solución al problema del origen de los datos vectoriales
+### Solución al problema de la fuente de los datos vectoriales
 * El Instituto Geográfico Nacional publica la información geográfica oficial de Argentina. Se puede bajar libremente en el sitio de las [Capas SIG del IGN](https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG). Nos pueden interesar por ejemplo las capas con geometría de polígono llamadas "País"(un polígono de República Argentina), "Provincia" (múltiples polígonos correspondientes a las provincias) o "Departamento" (múltiples polígnos correspondientes a los departamentos).
 * En cuanto a datos globales, no están disponibles en IGN, por lo que tenemos que recurrir a otras fuentes. El ejemplo típico es bajar una capa vectorial de países y que las Islas Malvinas no estén correctamente etiquetadas. En ese caso, sencillamente se puede editar la tabla de atributos de la capa vectorial y cambiar el nombre del polígono en el campo correspondiente al país y/o provincia. No es el objetivo de este documento explicar cómo editar un archivo vectorial, pero el procedimiento es relativamente sencillo y estoy a disposición para ayudar a quien tenga dificultades con este punto (en R hay varias maneras de hacerlo; en QGIS se puede revisar el apartado ["Trabajar con la tabla de atributos"](https://docs.qgis.org/3.10/es/docs/user_manual/working_with_vector/attribute_table.html?highlight=attribute%20table) del Manual de Aprendizaje).
 
@@ -184,10 +187,10 @@ mapa
 Los ejemplos provistos a continuación son para la versión QGIS 3.14 (la última versión disponible en julio de 2020), pueden cambiar levemente en versiones anteriores 3.xx. 
 
 En primer lugar, vamos a cargar las dos capas vectoriales de interés para el ejercicio tipo.
-Los links de descarga de la web de IGN (<https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG>) son: 
+Los links de descarga de las [capas SIG de IGN](https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG) son: 
 
-* Áreas protegidas (polígonos): <http://ramsac.ign.gob.ar/operaciones_sig/shp_from_geoserver/download.php?f=c2hwOjphcmVhX3Byb3RlZ2lkYS56aXA%3D>
-* Límite de la zona económica exclusiva (líneas): <http://ramsac.ign.gob.ar/operaciones_sig/shp_from_geoserver/download.php?f=c2hwOjpsaW5lYV9kZV9saW1pdGVfMDcwMTA3LnppcA%3D%3D>
+* [Áreas protegidas](http://ramsac.ign.gob.ar/operaciones_sig/shp_from_geoserver/download.php?f=c2hwOjphcmVhX3Byb3RlZ2lkYS56aXA%3D) (polígonos)
+* [Límite de la zona económica exclusiva](http://ramsac.ign.gob.ar/operaciones_sig/shp_from_geoserver/download.php?f=c2hwOjpsaW5lYV9kZV9saW1pdGVfMDcwMTA3LnppcA%3D%3D) (líneas)
 
 Bajamos las capas y las descomprimimos. Luego, debemos agregarlas al panel Capas de QGIS con alguno de estos métodos:
 
@@ -198,7 +201,7 @@ Bajamos las capas y las descomprimimos. Luego, debemos agregarlas al panel Capas
 
 Luego podemos cambiar la simbología de las capas de acuerdo a nuestra preferencia. 
 
-Para cargar mapas bases en QGIS 3.xx, se utilizan *XYZ Tiles*. Para comparar, vamos a cargar dos mapas bases, el de OpenStreepMap y el de Argenmap v2 de IGN. Hay muchos mapas bases en formato XYZ, aquí hay una guía muy útil: <https://mappinggis.com/2018/03/como-anadir-mapas-base-en-qgis-3-0-openstreetmap-google-carto-stamen/>.
+Para cargar mapas bases en QGIS 3.xx, se utilizan *XYZ Tiles*. Para comparar, vamos a cargar dos mapas bases, el de OpenStreepMap y el de Argenmap v2 de IGN. Hay muchos mapas bases en formato XYZ, [aquí](https://mappinggis.com/2018/03/como-anadir-mapas-base-en-qgis-3-0-openstreetmap-google-carto-stamen/) hay una guía muy útil.
 
 En el panel "Navegador" (si no se ve, agregarlo: _Ver > Paneles > Navegador_), buscar *XYZ Tiles*. Hacer clic derecho y luego clic en _"Conexión nueva"_. 
 
@@ -218,7 +221,7 @@ Ahora sí obtenemos el mapa deseado:
 
 ![](data/QGIS_4.png){width=50%}
 
-Dejo a disposición el proyecto de este ejercicio tipo, aquí: <https://github.com/nmorandeira/IGN_Malvinas/blob/master/IGN_Malvinas.qgz?raw=true>.
+Dejo a disposición [el proyecto de este ejercicio tipo](https://github.com/nmorandeira/IGN_Malvinas/blob/master/IGN_Malvinas.qgz?raw=true).
 Una visualización general del proyecto y las capas XYZ en los paneles Navegador y Capas es:
 
 ![](data/QGIS_5.png){width=80%}
