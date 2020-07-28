@@ -3,8 +3,8 @@
 
 Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
-### Protocolo completo
-Para acceder al protocolo completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/>
+### Documento completo
+Para acceder al documento completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/>
 
 ### A quién está dirigido
 Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
