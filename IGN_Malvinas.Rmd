@@ -19,7 +19,11 @@ En los mapas elaborados con herramientas digitales, las Islas Malvinas son mucha
 * No se habían dado cuenta del error, quieren solucionarlo pero no tienen suficientes conocimientos técnicos para solucionarlo.
 * Justifican el error porque, dicen, sus mapas están en inglés. Pero ojo: *la única traducción de "Islas Malvinas" al inglés es "Malvinas Islands"*. Así lo considera Cancillería Argentina (ver por ejemplo [este documento en inglés](https://www.cancilleria.gob.ar/en/news/newsletter/question-malvinas-islands-support-argentinas-claim)). Usar el nombre inglés o usar un binomio (Nombre argentino / Nombre inglés) implica simbólicamente un retroceso en nuestra reivindicación de soberanía sobre las islas.
 
+<<<<<<< HEAD
 ### ¿A quiénes está dirigido este documento?
+=======
+### ¿A quién está dirigido este documento?
+>>>>>>> 7033f6b168b9cb8a70b563bd84165f19ef1fc661
 Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
 
 A su vez, el documento está dirigido a quienes ya conozcan el mapa base Argenmap v2 del Instituto Geográfico Nacional y quieran promover su uso en R o QGIS.
@@ -209,32 +213,52 @@ En el panel "Navegador" (si no se ve, agregarlo: _Ver > Paneles > Navegador_), b
 
 El primer ejemplo es para OSM. En el nombre de la conexión, escribimos un nombre a elección. En la URL pegamos: <https://tile.openstreetmap.org/{z}/{x}/{y}.png>. El resto lo podemos dejar por defecto.
 
+<<<<<<< HEAD
 
+=======
+<center>
+>>>>>>> 7033f6b168b9cb8a70b563bd84165f19ef1fc661
 ![](data/QGIS_1.png){width=50%}
 </center>
 
 Luego, haciendo doble click en la capa o arrastrándola desde el panel del Navegador al panel de Capas, podemos desplegar el mapa base de OSM. Para desplegar las capas en orden, es necesario mover el mapa base debajo de los archivos vectoriales. Obtendremos algo similar a esto:
 
+<<<<<<< HEAD
 
+=======
+<center>
+>>>>>>> 7033f6b168b9cb8a70b563bd84165f19ef1fc661
 ![](data/QGIS_2.png){width=50%}
 </center>
 
 Para cargar el mapa base Argenmap v2 de IGN, volvemos a las XYZ tiles y creamos una nueva conexión. En este caso la URL es <http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG:3857@png/{z}/{x}/{-y}.png>.
 
+<<<<<<< HEAD
 
+=======
+<center>
+>>>>>>> 7033f6b168b9cb8a70b563bd84165f19ef1fc661
 ![](data/QGIS_3.png){width=50%}
 </center>
 
 Ahora sí obtenemos el mapa deseado:
 
+<<<<<<< HEAD
 
+=======
+<center>
+>>>>>>> 7033f6b168b9cb8a70b563bd84165f19ef1fc661
 ![](data/QGIS_4.png){width=50%}
 </center>
 
 Dejo a disposición [el proyecto de este ejercicio tipo](https://github.com/nmorandeira/IGN_Malvinas/blob/master/IGN_Malvinas.qgz?raw=true).
 Una visualización general de la vista del proyecto y las capas XYZ en los paneles Navegador y Capas es:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7033f6b168b9cb8a70b563bd84165f19ef1fc661
 
+<center>
 ![](data/QGIS_5.png){width=80%}
 </center>
 
