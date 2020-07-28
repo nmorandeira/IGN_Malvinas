@@ -12,18 +12,19 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 
 ---------------------
 
-## A quién está dirigido
-Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
-
-A su vez, el documento está dirigido a quienes ya conozcan el mapa base Argenmap v2 del Instituto Geográfico Nacional y quieran utilizarlo o promover su uso en R o QGIS.
-
-Si bien este documento no provee una solución explícita para Python ni para otros softwares/lenguajes libres, invito a contribuir a quienes lo deseen: posiblemente algo de lo aquí documentado pueda ser de utilidad. Por otro lado, en los softwares privativos de Sistemas de Información Geográfica muy probablemente podrá utilizarse la solución provista para QGIS, basada en XYZ tiles.
-
 ## Motivación
 En los mapas elaborados con herramientas digitales, las Islas Malvinas son muchas veces etiquetadas con un nombre incorrecto, no consistente con nuestro reclamo histórico y vigente de soberanía sobre las islas. ¿Por qué los argentinos y argentinas generan mapas con un nombre distinto a "Islas Malvinas"? Al discutirlo con colegas, me he encontrado con personas que:
+
 * No se habían dado cuenta del error, pero quieren y pueden solucionarlo cuando se les señala.
-* No se habían dado cuenta del error y no tienen suficientes conocimientos técnicos para solucionarlo.
+* No se habían dado cuenta del error, quieren solucionarlo pero no tienen suficientes conocimientos técnicos para solucionarlo.
 * Justifican el error porque, dicen, sus mapas están en inglés. Pero ojo: *la única traducción de "Islas Malvinas" al inglés es "Malvinas Islands"*. Así lo considera Cancillería Argentina (ver por ejemplo [este documento en inglés](https://www.cancilleria.gob.ar/en/news/newsletter/question-malvinas-islands-support-argentinas-claim)). Usar el nombre inglés o usar un binomio (Nombre argentino / Nombre inglés) implica simbólicamente un retroceso en nuestra reivindicación de soberanía sobre las islas.
+
+### ¿A quiénes está dirigido este documento?
+Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) utilizando un mapa base, y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
+
+A su vez, el documento está dirigido a quienes ya conozcan el mapa base Argenmap v2 del Instituto Geográfico Nacional y quieran promover su uso en R o QGIS.
+
+Si bien no proveo una solución explícita para Python ni para otros softwares/lenguajes libres, invito a contribuir a quienes lo deseen: posiblemente algo de lo aquí documentado pueda ser de utilidad. Por otro lado, en los softwares privativos de Sistemas de Información Geográfica muy probablemente podrá utilizarse la solución provista para QGIS, basada en XYZ tiles. El repositorio del proyecto en *Github* está en: <https://github.com/nmorandeira/IGN_Malvinas>.
 
 Este documento provee una discusión sobre los orígenes del problema de representación de las Islas Malvinas y algunas herramientas para resolverlo. Quienes sólo tengan interés en la solución práctica, pueden saltearse el próximo apartado sobre el origen del problema e ir a la sección *Protocolo para R* ó *Protocolo para QGIS*.
 
@@ -31,8 +32,6 @@ Este documento provee una discusión sobre los orígenes del problema de represe
 El protocolo fue redactado en julio de 2020, con colaboración de *Malena Libman* (Geochicas OSM) que señaló por dónde iba la solución: usar como mapa base a Argenmap v2, un gran trabajo elaborado por el Instituto Geográfico Nacional (IGN) de la República Argentina.
 
 Agradezco también a *Priscilla Minotti* por los comentarios que mejoraron el script de R y por sugerirme escribirlo en Rmd y dejarlo en Github; a *Yanina Bellini* por la ayuda para publicarlo en un sitio web y en general a *R-Ladies* (Buenos Aires, Santa Rosa y General Pico) por varios talleres y por la ayuda con Rmd y Git. 
-
-El repositorio del proyecto en *Github* está en: <https://github.com/nmorandeira/IGN_Malvinas>.
 
 ---------------------
 
@@ -47,6 +46,8 @@ Otro ejemplo puede ser el uso de un mapa global, con todos los países, en donde
 ### Solución al problema de la fuente de los datos vectoriales
 * El Instituto Geográfico Nacional publica la información geográfica oficial de Argentina. Se puede bajar libremente en el sitio de las [Capas SIG del IGN](https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/CapasSIG). Nos pueden interesar por ejemplo las capas con geometría de polígono llamadas "País"(un polígono de República Argentina), "Provincia" (múltiples polígonos correspondientes a las provincias) o "Departamento" (múltiples polígnos correspondientes a los departamentos).
 * En cuanto a datos globales, no están disponibles en IGN, por lo que tenemos que recurrir a otras fuentes. El ejemplo típico es bajar una capa vectorial de países y que las Islas Malvinas no estén correctamente etiquetadas. En ese caso, sencillamente se puede editar la tabla de atributos de la capa vectorial y cambiar el nombre del polígono en el campo correspondiente al país y/o provincia. No es el objetivo de este documento explicar cómo editar un archivo vectorial, pero el procedimiento es relativamente sencillo y estoy a disposición para ayudar a quien tenga dificultades con este punto (en R hay varias maneras de hacerlo; en QGIS se puede revisar el apartado ["Trabajar con la tabla de atributos"](https://docs.qgis.org/3.10/es/docs/user_manual/working_with_vector/attribute_table.html?highlight=attribute%20table) del Manual de Aprendizaje).
+
+---------------------
 
 ## El problema de los proveedores de mapas base
 Al representar datos espaciales (de tipo vectorial o ráster) es necesario usar un "mapa base", es decir, incluir información sobre la localización geográfica (recomiendo la [sección 27.3. del libro SIG de Víctor Olaya](https://t.co/LGXktkibl6?amp=1), en la que se abordan las diferencias entre cartografía temática y cartografía base). Podemos elaborar nuestro propio mapa base utilizando información cartográfica básica: localidades, límites políticos, cursos de agua, etc. Sin embargo, en los últimos tiempos se utilizan mucho mapas base ya elaborados, que en principio no podemos modificar, aún cuando no siempre necesitamos --y muchas veces no es recomendable-- tener mucho detalle. 
@@ -69,7 +70,7 @@ Por defecto, OSM representa los nombres en el lenguaje del país que considera l
 | ![](data/OSM_4.png){width=60%}|Esta etiqueta "name" es la más importante: es como por defecto se llama a las islas en todos los mapas que despleguemos. Acá está nuestro problema de mapeo.|
 | ![](data/OSM_5.png){width=60%}|Esta etiqueta "name:es" podría ser una solución parcial. Significa: "nombre en español". Vamos más adelante sobre ese punto.|
 | ![](data/OSM_6.png){width=60%}|De aquí me interesa destacar la nota, porque me fue señalada por parte de la comunidad de OSM. La traducción literal de la nota es: _"La política de OSM es que el 'name' a ser utilizado es el hablado por los habitantes. Plural. Malvinas es el nombre en español, y es ingresado en name:es. La convención de las Naciones Unidas se muestra como 'int_name'."_. Sin embargo, esta aclaración desconoce al menos dos cuestiones: 1) Hay un tema de soberanía, no de traducción: la única traducción de Islas Malvinas al inglés es Malvinas Islands; 2) El lenguaje oficial de Argentina es el castellano o español. Por otro lado, ¿por qué OSM --que reconoce que hay un territorio en disputa-- considera más conveniente usar el nombre en "name:es" y no (al menos) el nombre en "int_name" que es convención en Naciones Unidas?|
-| ![](data/OSM_7.png){width=60%}|Más información sobre las fuentes de información asociadas al objeto. Muy curioso: el objeto es parte de los "territorios británicos de ultramar", que parecen ser [territorios ocupados y colonias desperdigados por todo el mundo](https://www.openstreetmap.org/relation/3969434)|
+| ![](data/OSM_7.png){width=60%}|Más información sobre las fuentes de información asociadas al objeto. Muy curioso: el objeto es parte de los "territorios británicos de ultramar", que parecen ser [territorios ocupados y colonias desperdigados por todo el mundo](https://www.openstreetmap.org/relation/3969434).|
 
 -------------
 
@@ -146,7 +147,7 @@ mapa_base1
 ```
 
 
-Otro ejemplo, con el proveedor "Stamen Toner" (que puede ser lindo para usar en otras áreas del país):
+Otro ejemplo, con el proveedor "Stamen Toner" (que al no tener mucho detalle puede ser apropiado para usar como mapa base en otras áreas del país):
 ```{r mapabase_StamenToner}
 mapa_base2 <-leaflet() %>% 
   addProviderTiles("Stamen.Toner")  %>%
@@ -182,6 +183,7 @@ mapa
 ```
 
 -------------
+
 ## Protocolo para QGIS 3.xx
 ### Uso de un mapa base de Argenmap v2 (IGN) con XYZ Tiles
 Los ejemplos provistos a continuación son para la versión QGIS 3.14 (la última versión disponible en julio de 2020), pueden cambiar levemente en versiones anteriores 3.xx. 
@@ -207,23 +209,33 @@ En el panel "Navegador" (si no se ve, agregarlo: _Ver > Paneles > Navegador_), b
 
 El primer ejemplo es para OSM. En el nombre de la conexión, escribimos un nombre a elección. En la URL pegamos: <https://tile.openstreetmap.org/{z}/{x}/{y}.png>. El resto lo podemos dejar por defecto.
 
+
 ![](data/QGIS_1.png){width=50%}
+</center>
 
 Luego, haciendo doble click en la capa o arrastrándola desde el panel del Navegador al panel de Capas, podemos desplegar el mapa base de OSM. Para desplegar las capas en orden, es necesario mover el mapa base debajo de los archivos vectoriales. Obtendremos algo similar a esto:
 
+
 ![](data/QGIS_2.png){width=50%}
+</center>
 
 Para cargar el mapa base Argenmap v2 de IGN, volvemos a las XYZ tiles y creamos una nueva conexión. En este caso la URL es <http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG:3857@png/{z}/{x}/{-y}.png>.
 
+
 ![](data/QGIS_3.png){width=50%}
+</center>
 
 Ahora sí obtenemos el mapa deseado:
 
+
 ![](data/QGIS_4.png){width=50%}
+</center>
 
 Dejo a disposición [el proyecto de este ejercicio tipo](https://github.com/nmorandeira/IGN_Malvinas/blob/master/IGN_Malvinas.qgz?raw=true).
-Una visualización general del proyecto y las capas XYZ en los paneles Navegador y Capas es:
+Una visualización general de la vista del proyecto y las capas XYZ en los paneles Navegador y Capas es:
+
 
 ![](data/QGIS_5.png){width=80%}
+</center>
 
 
