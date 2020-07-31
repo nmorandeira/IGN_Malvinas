@@ -21,7 +21,7 @@ Las Malvinas son argentinas. En los mapas elaborados con herramientas digitales,
 
 Los mapas son una herramienta poderosa de comunicación política: nos permiten plasmar nuestra visión sobre el territorio. Considero inadmisible que las Islas Malvinas tengan un nombre incorrecto en los mapas que producimos argentinos y argentinas, así como en las publicaciones editadas en el país. Nuestro reclamo patriótico de soberanía sobre las islas no puede ser menoscabado por errores en las representaciones del territorio. Por este motivo, me interesa aportar a difundir la problemática y a que más personas puedan resolver sus problemas de representación de las Islas Malvinas.
 
-### ¿A quién está dirigido este documento?
+### ¿A quiénes está dirigido este documento?
 Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
 
 A su vez, el documento está dirigido a quienes ya conozcan el mapa base Argenmap v2 del Instituto Geográfico Nacional y quieran promover su uso en R o QGIS.
