@@ -4,7 +4,7 @@
 Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
 ### Documento completo
-Para acceder al documento completo, ir a: <https://nmorandeira.github.io/IGN_Malvinas/>
+Para acceder al documento completo, ir a: <https://nmorandeira.netlify.app/es/post/2020-08-02-representar-islas-malvinas-en-r-y-qgis/>
 
 ### A quiénes está dirigido
 Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
