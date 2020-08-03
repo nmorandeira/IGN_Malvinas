@@ -129,6 +129,13 @@ mapa <- tm_shape(areasprotegidas) +
   tm_lines(col="violet")
 mapa
 ```
+
+```{r leaflet0, echo=FALSE}
+#para guardar el html y luego poder incluirlo en la web
+tmap_save(mapa, "mapa_tmap.html") 
+```
+
+
 En la parte de abajo a la derecha del mapa dice que se está utilizando el entorno Leaflet e indica qué proveedor de mapas base se está usando. Si bien el proveedor por defecto parece cambiar según la versión y/o el día, durante julio de 2020 pude observar dos representaciones: una con OSM (y el nombre "Falkland Islands") y otra con ESRI (sin nombre ni en las islas ni en ningún otro territorio; ojo: no podemos usar este mapa base en cualquier circunstancia porque no es libre, ver los términos de uso de la licencia).
 
 Vamos a generar el mismo mapa pero con sintaxis de Leaflet (sin usar tmap), en donde podemos modificar el proveedor del mapa base. Hay muchos proveedores por defecto de mapas base, que se pueden cargar en Leaflet con el comando _"addProviderTiles"_. Aquí podemos ver un listado y una previsualización para la zona que querramos recorrer: <https://leaflet-extras.github.io/leaflet-providers/preview/>.
@@ -147,7 +154,13 @@ mapa_base1 <-leaflet() %>%
   setView(-60,-50, zoom = 5) 
 mapa_base1
 ```
+```{r leaflet1, echo=FALSE}
+#para guardar el html y luego poder incluirlo en la web
+library(htmlwidgets)
+library(htmltools)
 
+saveWidget(mapa_base1, "mapa_base1.html")
+```
 
 Otro ejemplo, con el proveedor "Stamen Toner" (que al no tener mucho detalle puede ser apropiado para usar como mapa base en otras áreas del país):
 ```{r mapabase_StamenToner}
@@ -156,6 +169,15 @@ mapa_base2 <-leaflet() %>%
   setView(-60,-50, zoom = 5) 
 mapa_base2
 ```
+```{r leaflet2, echo=FALSE}
+#para guardar el html y luego poder incluirlo en la web
+library(htmlwidgets)
+library(htmltools)
+
+saveWidget(mapa_base2, "mapa_base2.html")
+```
+
+
 
 El problema es que NINGÚN proveedor del extenso listado de proveedores que compartí antes dice "Islas Malvinas". Entonces hay que buscar cómo incluir el Argenmap v2 del IGN, que tan bien soluciona nuestro problema de representación. Para cargar las teselas de IGN hay que usar el comando _addTiles_ (en vez de _addProviderTiles_), así como conocer el link que nos da acceso a esas teselas. Este primer código crea un objeto que llamé _mapa_base_IGN_, es decir, el "Mapa base de IGN" en Leaflet.
 
@@ -167,20 +189,38 @@ mapa_base_IGN <-leaflet() %>%
 mapa_base_IGN
 ```
 
+```{r leaflet3, echo=FALSE}
+#para guardar el html y luego poder incluirlo en la web
+library(htmlwidgets)
+library(htmltools)
+
+saveWidget(mapa_base_IGN, "mapa_base_IGN.html")
+```
+
+
 Al hacer un recorrido en el mapa interactivo vemos que efectivamente Argenmap v2 de IGN resuelve el problema de representación de las Islas Malvinas. Y no sólo eso, también resuelve el nombre de la Provincia que las incluye y todas las toponimias oficiales de Argentina (ciudades, nombres de lagunas y ríos, montes, etc).
 
 Ahora que tenemos el mapa base de IGN ya creado, vamos a crear el mapa final del ejercicio, usando el conector _%>%_ para agregar al objeto _mapa_base_IGN_ las capas de polígonos y líneas. En la capa de polígonos de las áreas protegidas, la configuración del parámetro _label_ permite agregar etiquetas sobre las áreas protegidas, que se visualizan al apoyar el cursor.
 
 ```{r mapafinal}
-mapa <-mapa_base_IGN %>%
+mapa_final <-mapa_base_IGN %>%
   addPolygons(data=areasprotegidas,
               col = "darkgreen",
               fillOpacity = 0.3,
               label=~htmlEscape(areasprotegidas$fna)) %>%
   addPolylines(data=limite_ZEE,
             col = "violet")
-mapa
+mapa_final
 ```
+
+```{r leaflet4, echo=FALSE}
+#para guardar el html y luego poder incluirlo en la web
+library(htmlwidgets)
+library(htmltools)
+
+saveWidget(mapa, "mapa_final.html")
+```
+
 
 -------------
 
@@ -209,33 +249,22 @@ En el panel "Navegador" (si no se ve, agregarlo: _Ver > Paneles > Navegador_), b
 
 El primer ejemplo es para OSM. En el nombre de la conexión, escribimos un nombre a elección. En la URL pegamos: <https://tile.openstreetmap.org/{z}/{x}/{y}.png>. El resto lo podemos dejar por defecto.
 
-<center>
-![](data/QGIS_1.png){width=50%}
-</center>
+![](data/QGIS_1.png){width=100%}
 
 Luego, haciendo doble click en la capa o arrastrándola desde el panel del Navegador al panel de Capas, podemos desplegar el mapa base de OSM. Para desplegar las capas en orden, es necesario mover el mapa base debajo de los archivos vectoriales. Obtendremos algo similar a esto:
 
-<center>
-![](data/QGIS_2.png){width=50%}
-</center>
+![](data/QGIS_2.png){width=100%}
 
 Para cargar el mapa base Argenmap v2 de IGN, volvemos a las XYZ tiles y creamos una nueva conexión. En este caso la URL es <http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG:3857@png/{z}/{x}/{-y}.png>.
 
-<center>
-![](data/QGIS_3.png){width=50%}
-</center>
+![](data/QGIS_3.png){width=100%}
 
 Ahora sí obtenemos el mapa deseado:
 
-<center>
-![](data/QGIS_4.png){width=50%}
-</center>
+![](data/QGIS_4.png){width=100%}
+
 
 Dejo a disposición [el proyecto de este ejercicio tipo](https://github.com/nmorandeira/IGN_Malvinas/blob/master/IGN_Malvinas.qgz?raw=true).
 Una visualización general de la vista del proyecto y las capas XYZ en los paneles Navegador y Capas es:
 
-<center>
-![](data/QGIS_5.png){width=80%}
-</center>
-
-
+![](data/QGIS_5.png){width=100%}
