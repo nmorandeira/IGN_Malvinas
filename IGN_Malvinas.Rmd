@@ -154,6 +154,7 @@ mapa_base1 <-leaflet() %>%
   setView(-60,-50, zoom = 5) 
 mapa_base1
 ```
+
 ```{r leaflet1, echo=FALSE}
 #para guardar el html y luego poder incluirlo en la web
 library(htmlwidgets)
@@ -169,6 +170,8 @@ mapa_base2 <-leaflet() %>%
   setView(-60,-50, zoom = 5) 
 mapa_base2
 ```
+
+
 ```{r leaflet2, echo=FALSE}
 #para guardar el html y luego poder incluirlo en la web
 library(htmlwidgets)
@@ -213,12 +216,13 @@ mapa_final <-mapa_base_IGN %>%
 mapa_final
 ```
 
+
 ```{r leaflet4, echo=FALSE}
 #para guardar el html y luego poder incluirlo en la web
 library(htmlwidgets)
 library(htmltools)
 
-saveWidget(mapa, "mapa_final.html")
+saveWidget(mapa_final, "mapa_final.html")
 ```
 
 
