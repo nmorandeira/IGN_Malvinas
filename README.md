@@ -7,7 +7,7 @@ Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 Para acceder al documento completo, ir a: <https://nmorandeira.netlify.app/es/post/2020-08-02-representar-islas-malvinas-en-r-y-qgis/>
 
 ### Cita sugerida
-Morandeira, NS. 2020. Uso de cartografía oficial del Instituto Geográfico Nacional para representar a las Islas Malvinas en R y QGIS. v.1.0.0. doi: DOI: 10.5281/zenodo.3972477  
+Morandeira, NS. 2020. Uso de cartografía oficial del Instituto Geográfico Nacional para representar a las Islas Malvinas en R y QGIS. v.1.0.0. DOI: 10.5281/zenodo.3972477  
 
 [![DOI](https://zenodo.org/badge/282126861.svg)](https://zenodo.org/badge/latestdoi/282126861)
 
