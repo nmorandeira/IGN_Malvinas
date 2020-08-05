@@ -1,8 +1,6 @@
 # Cómo representar a las Islas Malvinas en R y en QGIS
 ## Protocolos para usar el mapa base _Argenmap v2_ del Instituto Geográfico Nacional
 
-[![DOI](https://zenodo.org/badge/282126861.svg)](https://zenodo.org/badge/latestdoi/282126861)
-
 Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
 ### Documento completo
@@ -10,6 +8,9 @@ Para acceder al documento completo, ir a: <https://nmorandeira.netlify.app/es/po
 
 ### Cita sugerida
 Morandeira, NS. 2020. Uso de cartografía oficial del Instituto Geográfico Nacional para representar a las Islas Malvinas en R y QGIS. v.1.0.0. doi: DOI: 10.5281/zenodo.3972477  
+
+[![DOI](https://zenodo.org/badge/282126861.svg)](https://zenodo.org/badge/latestdoi/282126861)
+
 
 ### A quiénes está dirigido
 Este documento está dirigido a todas aquellas personas que quieran hacer mapas en R o QGIS (dos entornos con software libre) y que entiendan del reclamo de Argentina de soberanía sobre las Islas Malvinas.
