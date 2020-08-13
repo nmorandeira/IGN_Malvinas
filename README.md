@@ -26,12 +26,12 @@ _(*) Edición del 13 de agosto de 2020:_ se incorporan archivos tipo para págin
 
 ### Qué contiene este repositorio
 Se provee:
-- Documentación con una discusión sobre el problema de representación de las Islas Malvinas y la solución de visualización provista por Argenmaps v2 del IGN, con instrucciones para R y QGIS 3.xx. Esta documentación y script de RMarkdown está en los archivos IGN_Malvinas.rmd y su compilado IGN_Malvinas.html.
+- Documentación con una discusión sobre el problema de representación de las Islas Malvinas y la solución de visualización provista por Argenmaps v2 del IGN, con instrucciones para R y QGIS 3.xx. Esta documentación y script de RMarkdown está en los archivos IGN_Malvinas.rmd y su compilado IGN_Malvinas.html. El documento y tutorial completo se puede leer en el (artículo en la web](<https://nmorandeira.netlify.app/es/post/2020-08-02-representar-islas-malvinas-en-r-y-qgis/>).
 - Tanto para R como para QGIS, un ejercicio tipo de visualización de dos capas vectoriales (Áreas protegidas de Argentina y Límites a la zona económica exclusiva), con un mapa base de fondo.
 - Breve discusión sobre otro origen del problema: uso de datos vectoriales de fuentes no oficiales.
 - Los scripts de R (.Rmd) con el ejemplo del ejercicio tipo.
 - Un proyecto de QGIS 3.14 (.qgz) con el ejemplo del ejercicio tipo.
-- Archivos tipo para utilizar el mapa base de IGN en páginas web: HTML, Java y CSS. El aporte fue realizado por José Mourglia. 
+- Archivos tipo para utilizar el mapa base de IGN en páginas web: HTML, Java y CSS. El aporte fue realizado por José Mourglia @jmourglia. 
 
 ### Agradecimientos
 El documento fue redactado en julio de 2020, con colaboración de *Malena Libman* (Geochicas OSM) que señaló por dónde iba la solución: usar como mapa base a Argenmap v2, un gran trabajo elaborado por el Instituto Geográfico Nacional (IGN) de la República Argentina.
