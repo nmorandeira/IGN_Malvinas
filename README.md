@@ -5,6 +5,7 @@ Elaborado por Natalia Morandeira (3iA-UNSAM, CONICET; nmorandeira@unsam.edu.ar)
 
 Publicado el 2 de agosto de 2020.
 
+### Actualización: representación en HTML con Leaflet + Java + CSS
 Actualizado el 13 de agosto de 2020 con archivos tipo para para páginas web (HTML Leaflet + Java + CSS), contribución de [José Mourglia](https://github.com/jmourglia) (Subsecretaría de Sistemas y Tecnologías de Información, Ministerio de Hacienda y Finanzas, Provincia de Corrientes).
 
 ### Documento completo
