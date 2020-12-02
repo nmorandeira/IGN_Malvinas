@@ -9,7 +9,7 @@ Publicado el 2 de agosto de 2020.
 Actualizado el 13 de agosto de 2020 con archivos tipo para para páginas web (HTML Leaflet + Java + CSS), contribución de [José Mourglia](https://github.com/jmourglia) (Subsecretaría de Sistemas y Tecnologías de Información, Ministerio de Hacienda y Finanzas, Provincia de Corrientes).
 
 ### Documento completo
-Para acceder al documento completo, ir a: <https://nmorandeira.netlify.app/es/post/2020-08-02-representar-islas-malvinas-en-r-y-qgis/>
+Para acceder al documento completo, ir a: <https://nmorandeira.netlify.app/post/2020-08-02-representar-islas-malvinas-en-r-y-qgis/>
 
 ### Citas sugeridas
 - Para referirse a la discusión del documento se puede citar la [página web](<https://nmorandeira.netlify.app/es/post/2020-08-02-representar-islas-malvinas-en-r-y-qgis/>).
